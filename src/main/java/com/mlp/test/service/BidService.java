@@ -125,20 +125,6 @@ public class BidService {
 
     }
 
-    public static void main(String[] args) {
-        int[][] bids = new int[][]{
-                {3, 7, 5, 1},
-                {2, 7, 8, 1},
-                {1, 5, 5, 0},
-                {4, 10, 3, 3}
-        };
-
-        int[] userIds = getUnallottedUsers(bids, 19);
-        for (int userId : userIds) {
-            System.out.println(userId);
-        }
-    }
-
     static class Bidder implements Comparable<Bidder> {
         private final int userId;
         private final int price;
