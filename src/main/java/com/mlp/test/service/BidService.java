@@ -7,7 +7,7 @@ import java.util.*;
  * @Time 2021-06-25
  */
 public class BidService {
-    public static int[] getUnallottedUsers(int[][] bids, int totalShares) {
+    public static List<Integer> getUnallottedUsers(List<List<Integer>> bids, int totalShares) {
         List<Integer> unAllottedUserList = new ArrayList<>();
 
         List<Bidder> allBidders = new ArrayList<>();
@@ -16,8 +16,8 @@ public class BidService {
         //<UserId,no.OfShares>
         Map<Integer, Integer> userOriginalSharesMap = new HashMap<>();
 
-        for (int[] bid : bids) {
-            Bidder bidder = new Bidder(bid[0], bid[1], bid[2], bid[3]);
+        for (List<Integer> bid : bids) {
+            Bidder bidder = new Bidder(bid.get(0), bid.get(1), bid.get(2), bid.get(3));
             allBidders.add(bidder);
             Map<Integer, Bidder> bidderMap;
             int price = bidder.getPrice();
@@ -108,20 +108,14 @@ public class BidService {
                 unAllottedUserList.add(bidder.getUserId());
             }
         }
-        int totalUnAllottedUserIds = unAllottedUserList.size();
-        int[] userIds = new int[totalUnAllottedUserIds];
-        for (int i = 0; i < totalUnAllottedUserIds; i++) {
-            userIds[i] = unAllottedUserList.get(i);
-        }
 
         //Free up memory
         samePriceBidderMap.clear();
         userOriginalSharesMap.clear();
         sortAndGroupByPriceBidderList.clear();
-        unAllottedUserList.clear();
         allBidders.clear();
         priceAlreadyAddedSet.clear();
-        return userIds;
+        return unAllottedUserList;
 
     }
 
