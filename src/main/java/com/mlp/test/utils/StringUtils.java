@@ -1,4 +1,4 @@
-package com.mlp.test.service;
+package com.mlp.test.utils;
 
 import java.util.HashMap;
 import java.util.Map;
