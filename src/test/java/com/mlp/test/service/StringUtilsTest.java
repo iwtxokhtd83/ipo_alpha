@@ -1,5 +1,6 @@
 package com.mlp.test.service;
 
+import com.mlp.test.utils.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
